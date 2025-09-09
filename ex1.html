@@ -24,6 +24,34 @@
                 // Empty password: Password must be non-empty.
                 var errorMessages="";
                 
+                const form = document.forms[formName];
+
+                const id = form["id"].value;
+                const age = form.age.value; 
+                const email = form.email.value;
+                const password = form.password.value; 
+
+                if (id.length > 10) {
+                    errorMessages += "ID must be at most 10 characters long.\n";
+                }
+
+                if (age < 10 || age > 40) {
+                    errorMessages += "Age must be between 10 and 40.\n";
+                }
+
+                if (!email.includes("@")) {
+                    errorMessages += "Email must contain the character @.\n";
+                }
+
+                if (password.trim().length === 0) {
+                    errorMessages += "Password must be non-empty.\n";
+                }
+
+                if(errorMessages!== ""){
+                    alert(errorMessages); 
+                    return false; 
+                }
+                return true; 
                 
             }
      
